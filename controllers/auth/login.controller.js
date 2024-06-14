@@ -30,12 +30,12 @@ module.exports = async (req, res) => {
   await redis.disconnect();
 
   res.cookie("accessToken", accessToken, {
-    maxAge: accessTokenExpiry,
-    httpOnly: process.env.NODE_ENV === "production",
-    secure: process.env.NODE_ENV === "production",
+    maxAge: parseInt(accessTokenExpiry) * 1000,
+    httpOnly: true || process.env.NODE_ENV === "production",
+    secure: true || process.env.NODE_ENV === "production",
   });
   res.cookie("refreshToken", refreshToken, {
-    maxAge: refreshTokenExpiry,
+    maxAge: parseInt(refreshTokenExpiry) * 1000,
     httpOnly: process.env.NODE_ENV === "production",
     secure: process.env.NODE_ENV === "production",
   });

@@ -1,4 +1,3 @@
-const { StatusCodes } = require("http-status-codes");
 const { UnauthorizedError } = require("../errors");
 const { redis } = require("../utils/db");
 const { verifyToken } = require("../utils/jwt");
